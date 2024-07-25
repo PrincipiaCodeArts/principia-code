@@ -88,4 +88,5 @@ to generate a stream of data that can be monitored or even create templates that
 execution of this element, even a visualization. It is very important to notice that no debugging instrumentation will be allowed in the production version of this element),
 logging stream out (the same as debugging, but for logging. It will be allowed to be used in production code, but it will never change the flow state of the original element), easy instrumentation
 for performance tests, easy instrumentation for networking server testing, failure instrumentation, etc.
+- This platform will assist the engineer in common tasks of engineering, like refactoring
    
