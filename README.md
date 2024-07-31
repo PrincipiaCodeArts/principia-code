@@ -98,4 +98,6 @@ repository exploration (it is a functionality that uses the semantic elements of
 problem with pieces of code from a semantic element with the help of the documentation and AI tools. It can create a coding problem from a semantic element using its tests as feedback and providing
 the user with a prompt to write the code that passes the test. )
 - The platform will have an easy TODO task system that will be easily integrated with life scheduler, allowing easy creation of tasks for the future without losing focus on the current task.
+- Add possibility of template or section-like organization within a text source of an element. For example, suppose that I have a large source code for a function, I will be able to create
+visual sections that can help me organize the content. They will not change the semantics of the element, but they will help organize it viasually.
    
