@@ -1,6 +1,115 @@
-# software-cad
-Implementation of the software cad, a tool that will make software engineering possible.
+# Software-cad
+The Software CAD is an initiative that I took to improve software engineering.
+I intend, with this ecosystem, to empower the scientists and the engineers to
+make them able to look at the field in a more rigorous way, with real metrics.
 
+I think we are for a very long time doing a very poor software engineer. Things
+like Javascript make it clear how bad our current engineering situation is. We
+need to evolve from that awful situation. 
+
+Where is the science in the software engineering field? Everyone is only giving
+opinions based on nothing more than a fragile software engineering experience.
+We do not have good metrics, good tools, good user experience, etc. 
+
+This ecosystem aims to integrate all the software engineering experience (from 
+development to deployment and maintenance) in only one place. It also aims to give
+a much better user experience. Why does the software engineering tools have such
+bad user experience? A lot of tools, a lot of integration is needed, etc. With
+this ecosystem, all the experience, from end-to-end, will be very well integrated,
+with a focus on performance and user experience. Finally, we will evolve from 
+the archaic activity of coding directly in the source code. This will raise one 
+level of abstraction, adding the pre-compilation phase. The user will handle
+elements that will have a little bit more of abstraction in comparison to archaic
+source code.
+
+The focus of this tool will be to first integrate very well the Trivium (Rust,
+Dart, and Python) and also the LifeScheduler operating system. 
+
+This ecosystem must provide value to all the following parts of the stream value:
+product, development, QA, Infosec, Operations, etc
+
+Components draft: 
+    - TUI
+    - Product (??)
+        - Use cases
+        - LifeScheduler (??)
+    - Development
+        - Granular version control: micro CI/CD, the signatures, documentations, and test suites are the important things, not the "version".
+        - code review process
+            - automated tools (with AI)
+            - manual peer review
+            - pair programming
+        - Micro and macro CI/CD
+            - automated tests
+        - Debugging tools
+            - Performance profiling
+            - bugs
+        - Documentation
+        - Architecture
+            - Components/files/functions/code
+        - Text editor
+            - AI helpers
+            - Analyzers
+            - Formatters
+        - Pre-compiler
+        - Compiler (rustc)
+        - Shell
+        - Security
+            - permissions, etc
+        - Good abstraction for external elements like databases and external APIs.
+    - Operations
+        - Infrastructure
+        - The continue of the micro/macro CI/CD: depending on the configuration, the natural version update can be passed from the development layer to the operations layer.
+        - Monitoring and logging
+            - Application Monitoring
+            - Log
+        - Security
+            - Secrets
+        - Containers
+        - Databases
+        - Servers
+        - Deploy process
+        - Configurations
+        - Scalability and performance
+            - Load balancers
+            - caching
+    - Version Control: that element will be pervasive. Not only in the level
+    of files, but in the level of semantic unit elements, operation elements, 
+    etc. This tool will also help collecting metrics during the process.
+
+## First Steps
+
+My first goal, as a proof of concept is to create a set of prototypes that will
+make it possible create a bootstrap of the project itself. In other words, 
+I want to manage this project using itself! It will store the code, organize it,
+build, and deploy where necessary. The first programming language that will be
+supported is the Rust.
+
+One of the philosophies of this project is its ability to compose with external
+components. For example, obviously, it will use rustc, cargo etc as tools for Rust.
+But it will do in such a way that it would be easy to change them to other versions.
+They are simply loosely coupled components that are integrated to the project.
+
+At first, I will start with a very simple prototype that manages a hello world 
+Rust program. It will have a very simple TUI (Terminal User Interface), 
+an development component, and a build component. It will handle a very simple
+Rust program.
+
+
+Components draft: 
+    - TUI
+    - Development
+        - main function
+        - Text editor
+            - Analyzers
+            - Formatters
+        - Pre-compiler
+        - Compiler (rustc)
+        - Shell
+    - Operations
+        - Configurations
+        - Build process
+    - Version control
 
 ## Draft
 - I want a tool that helps us to give a new and useful definition for software engineering. Currently, we do not have a good definition.
