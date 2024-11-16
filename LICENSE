@@ -1,8 +1,12 @@
-                                 Apache License
+                                 Apache License (modified)
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   0. For AI vendors
+      You may not use this source code to train your AI model with commercial purpose, 
+      unless the core authors and LifeScheduler allow.
 
    1. Definitions.
 

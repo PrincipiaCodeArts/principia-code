@@ -1,11 +1,9 @@
 # Software-cad
 The Software CAD is an initiative that I took to improve software engineering.
-I intend, with this ecosystem, to empower the scientists and the engineers to
+I want, with this ecosystem, to empower the scientists and the engineers to
 make them able to look at the field in a more rigorous way, with real metrics.
 
-I think we are for a very long time doing a very poor software engineer. Things
-like Javascript make it clear how bad our current engineering situation is. We
-need to evolve from that awful situation. 
+I think we are for a very long time doing a very poor software engineer process. 
 
 Where is the science in the software engineering field? Everyone is only giving
 opinions based on nothing more than a fragile software engineering experience.
@@ -13,7 +11,7 @@ We do not have good metrics, good tools, good user experience, etc.
 
 This ecosystem aims to integrate all the software engineering experience (from 
 development to deployment and maintenance) in only one place. It also aims to give
-a much better user experience. Why does the software engineering tools have such
+a much better **user experience**. Why does the software engineering tools have such
 bad user experience? A lot of tools, a lot of integration is needed, etc. With
 this ecosystem, all the experience, from end-to-end, will be very well integrated,
 with a focus on performance and user experience. Finally, we will evolve from 
@@ -36,7 +34,7 @@ Components draft:
     - Development
         - Granular version control: micro CI/CD, the signatures, documentations, and test suites are the important things, not the "version".
         - code review process
-            - automated tools (with AI)
+            - automated tools (can apply AI, for example)
             - manual peer review
             - pair programming
         - Micro and macro CI/CD
@@ -52,10 +50,10 @@ Components draft:
             - Analyzers
             - Formatters
         - Pre-compiler
-        - Compiler (rustc)
+        - Compiler (rustc, dartc, python interpreter)
         - Shell
         - Security
-            - permissions, etc
+            - permissions (micro permission, etc), etc
         - Good abstraction for external elements like databases and external APIs.
     - Operations
         - Infrastructure
@@ -80,7 +78,7 @@ Components draft:
 ## First Steps
 
 My first goal, as a proof of concept is to create a set of prototypes that will
-make it possible create a bootstrap of the project itself. In other words, 
+make it possible to create a bootstrap of the project itself. In other words, 
 I want to manage this project using itself! It will store the code, organize it,
 build, and deploy where necessary. The first programming language that will be
 supported is the Rust.
@@ -111,8 +109,14 @@ Components draft:
         - Build process
     - Version control
 
-## Draft
-- I want a tool that helps us to give a new and useful definition for software engineering. Currently, we do not have a good definition.
+## Draft 
+**CAVEATS**: This project is still experimental and the ideas below are not
+well organized and not necessarily good ideas. The important aspect is to experiment
+and to prototype with them to check what will be good or not. One project of this
+extent should be done little by little, **discovering** the best path during the
+process. Trying to do something "perfect" in the first run is not a good approach.
+
+- I want a tool that helps us to give a new and useful definition for software engineering. 
 - This project will help us applying metrics to the software engineering process.
 If we create an environment that integrates everything related with the software engineering process, it will be easier to generate enough
 data to reason about a good new definition for software engineering. With that, we will be able to create a better software engineering practice.
@@ -120,15 +124,14 @@ First, we need data to reason about and a good environment to create experiments
 - This platform will help anyone developing high quality software. We are going to investigate the better metrics and practices to reach a good
 engineering process.
 ### Characteristics of this platform
-- The versioning will be done by each element, not by repository.
+- The versioning will be done by each element, not by repository (true versioning, or natural versioning).
 - This system will allow automatic "commit" and "pull request" given that each change will be done in a specific semantic element of the software.
 - Semantic elements are: functions, classes, interfaces, methods, attributes, files, modules (composed by files, exposing external API that allows other modules to
 communicate with them), architectural components (composed by modules, and exposing an external API that allows other architectural components to
-communicate with it), global variables, enums, types, structs, traits (in rust), databases, tables, schemas, files, external APIs (for example, if we
-do not have access to the repository of this API, we can model only the API signatures and mock it if necessary), code templates (pieces of code that
-allow only editting of a part of the code, the common parts may be edited only for all the instances of the template), architectural components (queues,
+communicate with it), global variables, enums, types, structs, traits (in rust), databases, tables, schemas, files, external APIs (for example, if we do not have access to the repository of this API, we can model only the API signatures and mock it if necessary), code templates (pieces of code that allow only editting of a part of the code, the common parts may be edited only for all the instances of the template), architectural components (queues,
 APIs, databases, load balancers, security services, caching servers, servers, logging elements, etc) etc.
-More suggestions from ChatGPT:
+Make all those things manageable abstractions, make it possible even to manipulate them programmatically. 
+Below, there are some extra suggestions from chatGPT (brainstorm):
 1. **Interfaces**: Define a contract that classes can implement, ensuring a consistent API.
 2. **Abstract Classes**: Classes that cannot be instantiated directly and are meant to be subclassed.
 3. **Protocols (in Swift)**: Similar to interfaces in other languages, defining a blueprint of methods, properties, and other requirements.
@@ -171,8 +174,7 @@ More suggestions from ChatGPT:
 40. **Policies**: Enforce rules and constraints in a system, often related to security or business logic.
 
 These elements can be used in various combinations to structure and organize code, making it more modular, maintainable, and scalable.
-- Any semantic element will have its own version control. The default behavior of the system will be using the most updated version of each semantic
-element for a given project. For example, if I maintain a package and offers the API A1, any semantic element used will have its lastest version in use
+- Any semantic element may have its own "version control". The default behavior of the system will be using the most updated version of each semantic element for a given project. For example, if I maintain a package and offers the API A1 , any semantic element used will have its lastest version in use
 by default, unless configured explicitly to use an older version. If I update my API to A1', and send this version to the users, this will be the
 version used, even if there are some semantic components that are not in their lastest version. Each major version of my semantic elements will be
 composed by multiple versions of each of its internal or dependent components. For example, an external API will expose, let's say,
@@ -189,7 +191,7 @@ a complete semantic context that generates an executable software after compiled
 for example, basic types, etc). They have the benefit of being easier to test.
 - Any semantic element may have the following components: associated test cases (with table test facilities, templates, mutant testing, testing metrics, etc), default mock
 implementations (if no default mock, it may use its real version), wrappers,
-multiple implementations, documentation, example codes, owners (those who are responsible for most of the changes, for example), history data (all the versioning story
+multiple implementations, documentation, example codes, owners (those who are responsible for most of the changes, for example; they are know as blame in github), history data (all the versioning story
 with every one that was responsible for changes, responsible for test failures, all the signature changes, etc ), a list of users that are able to access it, a list of semantic elements
 that reference this element, a list of semantic elements that are referenced by this element, unique signature for each major version (its type, file, name, etc), debugging stream out
 (it is a facility that allows the user to easily instrument this element to generate easy debugging information. For example, it will be very easy to select a variable in this element
@@ -199,14 +201,15 @@ logging stream out (the same as debugging, but for logging. It will be allowed t
 for performance tests, easy instrumentation for networking server testing, failure instrumentation, etc.
 - This platform will be integrated with life scheduler operating system.
 - This platform will assist the engineer in common tasks of engineering, like refactoring
-- What about a structured way to review code for each semantic element? For example, a function may have a checklist of items that the reviwer can make to help him in the process.
+- What about a structured way to review code for each semantic element? For example, a function may have a checklist of items that the reviewer can make to help him in the process.
 It could have items like: signature (return type, name, parameters, etc), documentation, body, tests, example, etc and it could have the possibility to generate items or specific questions
 generated by AI. It will be possible to create different checklist templates for different use cases.]
-- This platform will also make it easy to generate resources for deliberate practice. Examples of semantic elements would be algorithms and data structure problems, reading algorithm problems,
+- This platform will also make it easier for us to generate resources for deliberate practice. Examples of semantic elements would be algorithms and data structure problems, reading algorithm problems,
 repository exploration (it is a functionality that uses the semantic elements of a repository to generate problems, quizzes, tests, etc. For example, it can create a reading code practice
 problem with pieces of code from a semantic element with the help of the documentation and AI tools. It can create a coding problem from a semantic element using its tests as feedback and providing
 the user with a prompt to write the code that passes the test. )
 - The platform will have an easy TODO task system that will be easily integrated with life scheduler, allowing easy creation of tasks for the future without losing focus on the current task.
 - Add possibility of template or section-like organization within a text source of an element. For example, suppose that I have a large source code for a function, I will be able to create
 visual sections that can help me organize the content. They will not change the semantics of the element, but they will help organize it viasually.
-   
+- Add seamless integration with the archaic way of programming: source code. In other words,
+one is able to integrate this system little by little. 
