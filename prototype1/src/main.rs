@@ -1,7 +1,4 @@
-use cursive::{
-    views::{Dialog, TextView},
-    Cursive,
-};
+use cursive::{views::Dialog, Cursive};
 
 fn main() {
     // Creates the cursive root - required for every application.
