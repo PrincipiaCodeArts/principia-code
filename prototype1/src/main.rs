@@ -20,7 +20,7 @@ fn show_next(siv: &mut Cursive) {
         Dialog::text("You have pressed <next>, congratulations!")
             .title("Questão 1")
             .button("Sim", |s| show_answer(s, "Resposta correta, parabéns!"))
-            .button("Não", |s| show_answer(s))
+            .button("Não", |s| show_answer(s, "Resposta incorreta"))
             .button("O quê?", |s| s.add_layer(Dialog::info("Tente novamente!"))),
     );
 }
