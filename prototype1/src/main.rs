@@ -1,5 +1,7 @@
 use cursive::{views::Dialog, Cursive};
 
+mod resources;
+
 fn main() {
     // Creates the cursive root - required for every application.
     let mut siv = cursive::default();
