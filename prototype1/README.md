@@ -50,7 +50,7 @@ of the resource, if it makes sense.
         1. Manage a resource
             - Redirects to the page that allows managing the resources
 1. **Create the basic resources**:
-    1. Main: the main resource represents the main() function of rust. It contains multiple components:
+    - [ ] Main: the main resource represents the main() function of rust. It contains multiple components:
         - Components:
             - id
             - name
@@ -71,7 +71,7 @@ of the resource, if it makes sense.
                     - Timestamp: number of seconds from Epoch 
                     - Commit author
                     - Illustration: [src1, "initial commit", 123123, "A1"]->[src2, "change 1", 12312323, "A2"]->[src3, "commit 3", 1231235345, "A1"]
-    1. Function: represents any fn element that could be created on a body of a
+    - [ ] Function: represents any fn element that could be created on a body of a
     rust file. Its components are:
         - Components:
             - id
@@ -102,7 +102,7 @@ of the resource, if it makes sense.
                     - Commit author
                     - Illustration: [src1, "initial commit", 123123, "A1"]->[src2, "change 1", 12312323, "A2"]->[src3, "commit 3", 1231235345, "A1"]
 
-    1. Constant: represents any const element that could be created on a body of a
+    - [ ] Constant: represents any const element that could be created on a body of a
     rust file. Its components are:
         - Components:
             - id
