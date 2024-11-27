@@ -5,31 +5,35 @@ fn main() {
     let mut siv = cursive::default();
 
     siv.add_layer(
-        Dialog::text("This is a survey\nPress <next> when you are ready")
-            .title("Hello World Survey")
-            .button("Next", show_next),
+        Dialog::text("Welcome to SE-CAD")
+            .title("Software Engineering CAD")
+            .button("Run", |s| show_answer(s, "running a resource"))
+            .button("Create", |s| show_answer(s, "Creating a resource"))
+            .button("Manage", |s| show_answer(s, "Managing a resource"))
+            .button("Exit", |s| prompt_exit(s)),
     );
 
     // Starts the event loop.
     siv.run();
 }
 
-fn show_next(siv: &mut Cursive) {
-    siv.pop_layer();
+fn prompt_exit(siv: &mut Cursive) {
     siv.add_layer(
-        Dialog::text("You have pressed <next>, congratulations!")
-            .title("Questão 1")
-            .button("Sim", |s| show_answer(s, "Resposta correta, parabéns!"))
-            .button("Não", |s| show_answer(s, "Resposta incorreta"))
-            .button("O quê?", |s| s.add_layer(Dialog::info("Tente novamente!"))),
+        Dialog::text("Are you sure?")
+            .button("Yes", |s| s.quit())
+            .button("No", |s| {
+                let _ = s.pop_layer();
+            })
+            .title("Exit"),
     );
 }
 
 fn show_answer(siv: &mut Cursive, msg: &str) {
-    siv.pop_layer();
     siv.add_layer(
         Dialog::text(msg)
-            .button("Finish", |s| s.quit())
-            .title("Results"),
+            .button("OK", |s| {
+                let _ = s.pop_layer();
+            })
+            .title("Action"),
     );
 }
