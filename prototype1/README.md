@@ -39,7 +39,7 @@ of the resource, if it makes sense.
 
 ## Requirements
 
-1. **A basic TUI for the home**: 
+- [X] **A basic TUI for the home**: 
     - The user will be able to select one of the following options in the home:
         1. Execute a resource: Choose a Main to execute (pre-compile, compile, opens a shell, and execute)
         1. Create a resource
