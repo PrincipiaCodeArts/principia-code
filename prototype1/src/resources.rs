@@ -1,27 +1,31 @@
 use chrono::{DateTime, Utc};
 use uuid::Uuid;
 
+#[derive(Debug)]
 struct Documentation {
     description: String,
     examples: Vec<String>,
 }
 
+#[derive(Debug)]
 struct Metadata {
     author: String,
-    version: String,
     timestamp: DateTime<Utc>,
     documentation: Documentation,
 }
 
+#[derive(Debug, Clone, Copy)]
 pub enum ReturnType {
     Int,
     Void,
 }
 
+#[derive(Debug, Clone, Copy)]
 pub struct Signature {
-    return_type: ReturnType,
+    pub return_type: ReturnType,
 }
 
+#[derive(Debug)]
 struct ContentSnapshot {
     source_code: String,
     commit_message: String,
@@ -29,6 +33,7 @@ struct ContentSnapshot {
     author: String,
 }
 
+#[derive(Debug)]
 pub struct MainResource {
     id: String,
     name: String,
@@ -38,10 +43,12 @@ pub struct MainResource {
 }
 
 impl MainResource {
+    pub fn name(&self) -> String {
+        self.name.clone()
+    }
     pub fn new(
         name: String,
         author: String,
-        version: String,
         description: String,
         examples: Vec<String>,
         signature: Signature,
@@ -53,7 +60,6 @@ impl MainResource {
         };
         let metadata = Metadata {
             author: author.to_string(),
-            version,
             timestamp: current_time,
             documentation,
         };
