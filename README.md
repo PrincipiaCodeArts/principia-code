@@ -212,4 +212,5 @@ the user with a prompt to write the code that passes the test. )
 - Add possibility of template or section-like organization within a text source of an element. For example, suppose that I have a large source code for a function, I will be able to create
 visual sections that can help me organize the content. They will not change the semantics of the element, but they will help organize it viasually.
 - Add seamless integration with the archaic way of programming: source code. In other words,
-one is able to integrate this system little by little. 
+one is able to integrate this system little by little.
+- Another possible feature is adding testing checkpoints in code. For example, suppose that I have a function which I do not want to change its code or refactor it. But at the same time I want to test a very specific part of this function. I can add two checkpoints (start and end) to simulate the execution of only that part. I only need to provide the mocked input for start and the expected for the end. I may also add intermediate points with intermediate checks.
