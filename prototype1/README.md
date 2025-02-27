@@ -50,7 +50,7 @@ of the resource, if it makes sense.
         1. Manage a resource
             - Redirects to the page that allows managing the resources
 1. **Create the basic resources**:
-    1. Main: the main resource represents the main() function of rust. It contains multiple components:
+    - [ ] Main: the main resource represents the main() function of rust. It contains multiple components:
         - Components:
             - id
             - name
@@ -71,7 +71,7 @@ of the resource, if it makes sense.
                     - Timestamp: number of seconds from Epoch 
                     - Commit author
                     - Illustration: [src1, "initial commit", 123123, "A1"]->[src2, "change 1", 12312323, "A2"]->[src3, "commit 3", 1231235345, "A1"]
-    1. Function: represents any fn element that could be created on a body of a
+    - [ ] Function: represents any fn element that could be created on a body of a
     rust file. Its components are:
         - Components:
             - id
@@ -102,7 +102,7 @@ of the resource, if it makes sense.
                     - Commit author
                     - Illustration: [src1, "initial commit", 123123, "A1"]->[src2, "change 1", 12312323, "A2"]->[src3, "commit 3", 1231235345, "A1"]
 
-    1. Constant: represents any const element that could be created on a body of a
+    - [ ] Constant: represents any const element that could be created on a body of a
     rust file. Its components are:
         - Components:
             - id
@@ -130,4 +130,30 @@ of the resource, if it makes sense.
 
 
 ## Lessons learnt
+- Should I store the content of some resource as source code?
+    - For example, should the main function be stored as source code or as some other type of artifact?
+        - If source code was chosen, I need to think how would the other resources be linked. I think a good idea is to store their id in the source code and during the precompilation phase I can serve them with the resources referenced by the ids.
+        - Example:
+            // Resource 1 - Source code 1 (Main with id "id123"):
+            {
+                `id124`();
+                exit 0;
+            }
+
+            // Resource 2 - Source code 2 (Function with id "id124"):
+            {
+                println!("Hello World");
+            }
+
+            // After the precompilation phase, we will get the following
+            // source code:
+            fn _id124(){ println!("Hello Wolrd"); }
+
+            fn main()->u32{
+                _id124();
+                exit 0;
+            }
+- One thing to have in mind: how can I maintain the integrity between two resources such that one is dependent on the other?
+    - R1 depends on R2: R1 has a reference to the universal id of R2. But not only that. It may also has a hash to that version, making sure that it will use exactly the source code and configuration that was stated initially. This is specially useful for external resources. 
+        - Example: suppose that I want to use a function called "foo" created by an external agent. The version of the function is 1.2.3. Other specific characteristics that are relevant to the work of the function are translated in a hash. If the owner of that library decides to change the source code, I will be able to notice that. 
 
