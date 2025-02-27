@@ -1,4 +1,8 @@
+use cursive::align::HAlign;
+use cursive::event::{EventResult, Key};
 use cursive::traits::*;
+use cursive::view::scroll::Scroller;
+use cursive::views::{OnEventView, Panel, TextArea};
 use cursive::{
     views::{Dialog, EditView, LinearLayout, RadioGroup, SelectView, TextView},
     Cursive,
@@ -7,13 +11,13 @@ use resources::{MainResource, ReturnType, Signature};
 
 mod resources;
 
-fn main() {
+//fn main() {
     // Creates the cursive root - required for every application.
     let mut siv = cursive::default();
 
     siv.add_layer(
-        Dialog::text("Welcome to SE-CAD")
-            .title("Software Engineering CAD")
+        Dialog::text("Welcome to Alien Code")
+            .title("Alien Code")
             .button("Run", |s| show_answer(s, "running a resource"))
             .button("Create", |s| show_create_options(s))
             .button("Manage", |s| show_answer(s, "Managing a resource"))
@@ -122,7 +126,56 @@ fn create_main_resource(siv: &mut Cursive, return_type: &RadioGroup<ReturnType>)
         vec![],
         signature,
     );
-    show_success(siv, &format!("Created main resource: {}", result.name()));
+    // Show the code editor for the main content
+    // Add the cursive syntect to highlight the rust code.
+    siv.add_fullscreen_layer(
+        Dialog::around(Panel::new(
+            TextArea::new()
+                .with_name("source_code")
+                .full_screen()
+                .scrollable()
+                .wrap_with(OnEventView::new)
+                .on_pre_event_inner(Key::PageUp, |v, _| {
+                    let scroller = v.get_scroller_mut();
+                    if scroller.can_scroll_up() {
+                        scroller.scroll_up(scroller.last_outer_size().y.saturating_sub(1));
+                    }
+                    Some(EventResult::Consumed(None))
+                })
+                .on_pre_event_inner(Key::PageDown, |v, _| {
+                    let scroller = v.get_scroller_mut();
+                    if scroller.can_scroll_down() {
+                        scroller.scroll_down(scroller.last_outer_size().y.saturating_sub(1));
+                    }
+                    Some(EventResult::Consumed(None))
+                }),
+            /*
+               TextView::new("This is a huge content, my friend!")
+                   .scrollable()
+                   .wrap_with(OnEventView::new)
+                   .on_pre_event_inner(Key::PageUp, |v, _| {
+                       let scroller = v.get_scroller_mut();
+                       if scroller.can_scroll_up() {
+                           scroller.scroll_up(scroller.last_outer_size().y.saturating_sub(1));
+                       }
+                       Some(EventResult::Consumed(None))
+                   })
+                   .on_pre_event_inner(Key::PageDown, |v, _| {
+                       let scroller = v.get_scroller_mut();
+                       if scroller.can_scroll_down() {
+                           scroller.scroll_down(scroller.last_outer_size().y.saturating_sub(1));
+                       }
+                       Some(EventResult::Consumed(None))
+                   }),
+            */
+        ))
+        .title("Main content")
+        // This is the alignment for the button
+        .h_align(HAlign::Center)
+        .button("Quit", |s| s.quit()),
+    );
+
+    //show_success(siv, &format!("Created main resource: {}", result.name()));
 }
 
 fn show_error(siv: &mut Cursive, message: &str) {
@@ -147,4 +200,12 @@ fn show_answer(siv: &mut Cursive, msg: &str) {
             })
             .title("Action"),
     );
+}
+
+fn main() {
+    // The source code goes below (you can only edit between horizontal lines)
+    //-----------------------------------
+    let hello_world = "Hello, World!";
+    println!("{hello_world}");
+    //-----------------------------------
 }
