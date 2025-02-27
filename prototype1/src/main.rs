@@ -11,7 +11,7 @@ use resources::{MainResource, ReturnType, Signature};
 
 mod resources;
 
-//fn main() {
+fn main() {
     // Creates the cursive root - required for every application.
     let mut siv = cursive::default();
 
@@ -200,12 +200,4 @@ fn show_answer(siv: &mut Cursive, msg: &str) {
             })
             .title("Action"),
     );
-}
-
-fn main() {
-    // The source code goes below (you can only edit between horizontal lines)
-    //-----------------------------------
-    let hello_world = "Hello, World!";
-    println!("{hello_world}");
-    //-----------------------------------
 }
