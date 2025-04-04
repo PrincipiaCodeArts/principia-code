@@ -1,4 +1,4 @@
-# AlienCode
+# PrincipiaCode
 The AlienCode is an initiative that I took to improve software engineering.
 I want, with this ecosystem, to empower the scientists and the engineers to
 make them able to look at the field in a more rigorous way, with real metrics.
