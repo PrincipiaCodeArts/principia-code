@@ -1,8 +1,0 @@
-[package]
-name = "tui"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-cursive = "0.21"
-software_cad = { path = "../software_cad" }
